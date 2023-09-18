@@ -1,1 +1,115 @@
 
+public class Veiculo {
+    private String marca;
+    private String modelo;
+    private int anoFabricacao;
+    private int velocidade;
+
+    public Veiculo(String marca, String modelo, int anoFabricacao) {
+        this.marca = marca;
+        this.modelo = modelo;
+        this.anoFabricacao = anoFabricacao;
+        this.velocidade = 0;
+    }
+
+    public void acelerar(int incremento) {
+        velocidade += incremento;
+        System.out.println("O veículo acelerou para " + velocidade + " km/h.");
+    }
+
+    public void frear(int decremento) {
+        if (velocidade >= decremento) {
+            velocidade -= decremento;
+            System.out.println("O veículo freou para " + velocidade + " km/h.");
+        } else {
+            System.out.println("O veículo já está parado.");
+        }
+    }
+
+    
+    public String getMarca() {
+        return marca;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public int getAnoFabricacao() {
+        return anoFabricacao;
+    }
+
+    public int getVelocidade() {
+        return velocidade;
+    }
+}
+
+
+public class Carro extends Veiculo {
+    private int numeroPortas;
+
+    public Carro(String marca, String modelo, int anoFabricacao, int numeroPortas) {
+        super(marca, modelo, anoFabricacao);
+        this.numeroPortas = numeroPortas;
+    }
+
+    public void ligarFarol() {
+        System.out.println("Farol do carro está ligado.");
+    }
+
+   
+}
+
+
+public class Moto extends Veiculo {
+    private boolean temCapacete;
+
+    public Moto(String marca, String modelo, int anoFabricacao, boolean temCapacete) {
+        super(marca, modelo, anoFabricacao);
+        this.temCapacete = temCapacete;
+    }
+
+    public void empinar() {
+        System.out.println("A moto está empinando!");
+    }
+
+    
+}
+
+
+public class Bicicleta extends Veiculo {
+    private int numeroMarchas;
+
+    public Bicicleta(String marca, String modelo, int anoFabricacao, int numeroMarchas) {
+        super(marca, modelo, anoFabricacao);
+        this.numeroMarchas = numeroMarchas;
+    }
+
+    public void pedalar() {
+        System.out.println("A bicicleta está sendo pedalada.");
+    }
+
+    
+}
+
+
+public class Executavel {
+    public static void main(String[] args) {
+        Carro meuCarro = new Carro("Ford", "Focus", 2020, 4);
+        Moto minhaMoto = new Moto("Honda", "CBR", 2022, true);
+        Bicicleta minhaBicicleta = new Bicicleta("Caloi", "Elite", 2021, 18);
+
+        meuCarro.acelerar(50);
+        minhaMoto.acelerar(30);
+        minhaBicicleta.acelerar(15);
+
+        meuCarro.frear(20);
+        minhaMoto.frear(10);
+        minhaBicicleta.frear(5);
+
+        meuCarro.ligarFarol();
+        minhaMoto.empinar();
+        minhaBicicleta.pedalar();
+    }
+}
+
